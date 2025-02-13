@@ -45,6 +45,115 @@ blocks:
     coordinate: [200, 12]
     rotation: 0
     state: enabled
+- name: epy_block_0
+  id: epy_block
+  parameters:
+    _source_code: "\"\"\"\nEmbedded Python Blocks:\n\nEach time this file is saved,\
+      \ GRC will instantiate the first class it finds\nto get ports and parameters\
+      \ of your block. The arguments to __init__  will\nbe the parameters. All of\
+      \ them are required to have default values!\n\"\"\"\n\nimport numpy as np\n\
+      from gnuradio import gr\n\n\nclass blk(gr.sync_block):  # other base classes\
+      \ are basic_block, decim_block, interp_block\n    \"\"\"Embedded Python Block\
+      \ example - a simple multiply const\"\"\"\n\n    def __init__(self, example_param=1.0):\
+      \  # only default arguments here\n        \"\"\"arguments to this function show\
+      \ up as parameters in GRC\"\"\"\n        gr.sync_block.__init__(\n         \
+      \   self,\n                name =\"bloque_dife\", # will show up in GRC\n  \
+      \              in_sig =[ np.float32 ],\n                out_sig =[ np.float32\
+      \ ]\n            self.acum_anterior = 0\n        )\n        # if an attribute\
+      \ with the same name as a parameter is found,\n        # a callback is registered\
+      \ (properties work, too).\n        self.example_param = example_param\n\n  \
+      \  def work(self, input_items, output_items):\n        x = input_items[0] #\
+      \ Senial de entrada .\n        y0 = output_items[0] # Senial acumulada diferencial\n\
+      \        N = len(x)\n        diff = np.cumsum(x) - self.acum_anterior\n    \
+      \    self.acum_anterior = diff[N -1]\n        y0[:] = diff\n        return len(y0)\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    example_param: '1.0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    _io_cache: ('Embedded Python Block', 'blk', [('example_param', '1.0')], [('0',
+      'complex', 1)], [('0', 'complex', 1)], 'Embedded Python Block example - a simple
+      multiply const', ['example_param'])
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [640, 352.0]
+    rotation: 0
+    state: enabled
+- name: epy_block_1
+  id: epy_block
+  parameters:
+    _source_code: "\"\"\"\nEmbedded Python Blocks:\n\nEach time this file is saved,\
+      \ GRC will instantiate the first class it finds\nto get ports and parameters\
+      \ of your block. The arguments to __init__  will\nbe the parameters. All of\
+      \ them are required to have default values!\n\"\"\"\n\nimport numpy as np\n\
+      from gnuradio import gr\n\n\nclass blk(gr.sync_block):  # other base classes\
+      \ are basic_block, decim_block, interp_block\n    \"\"\"Embedded Python Block\
+      \ example - a simple multiply const\"\"\"\n\n    def __init__(self, example_param=1.0):\
+      \  # only default arguments here\n        \"\"\"arguments to this function show\
+      \ up as parameters in GRC\"\"\"\n        gr.sync_block.__init__(\n         \
+      \   self,\n            name =\"bloque_acum\", # will show up in GRC\n      \
+      \      in_sig =[np.float32],\n            out_sig =[np.float32]\n        )\n\
+      \        # if an attribute with the same name as a parameter is found,\n   \
+      \     # a callback is registered (properties work, too).\n        self.example_param\
+      \ = example_param\n\n    def work(self, input_items, output_items):\n      \
+      \  x = input_items[0] # Senial de entrada .\n        y0 = output_items[0] #\
+      \ Senial acumulada\n        y0[:] = np.cumsum(x)  \n        return len(y0)\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    example_param: '1.0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    _io_cache: ('bloque_acum', 'blk', [('example_param', '1.0')], [('0', 'float',
+      1)], [('0', 'float', 1)], 'Embedded Python Block example - a simple multiply
+      const', ['example_param'])
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [656, 232.0]
+    rotation: 0
+    state: enabled
+- name: epy_block_2
+  id: epy_block
+  parameters:
+    _source_code: "\"\"\"\nEmbedded Python Blocks:\n\nEach time this file is saved,\
+      \ GRC will instantiate the first class it finds\nto get ports and parameters\
+      \ of your block. The arguments to __init__  will\nbe the parameters. All of\
+      \ them are required to have default values!\n\"\"\"\n\nimport numpy as np\n\
+      from gnuradio import gr\n\n\nclass blk(gr.sync_block):  # other base classes\
+      \ are basic_block, decim_block, interp_block\n    \"\"\"Embedded Python Block\
+      \ example - a simple multiply const\"\"\"\n\n    def __init__(self, example_param=1.0):\
+      \  # only default arguments here\n        \"\"\"arguments to this function show\
+      \ up as parameters in GRC\"\"\"\n        gr.sync_block.__init__(\n         \
+      \   self,\n                name =\"bloque_dife\", # will show up in GRC\n  \
+      \              in_sig =[ np.float32 ],\n                out_sig =[ np.float32\
+      \ ]\n            self.acum_anterior = 0\n        )\n        # if an attribute\
+      \ with the same name as a parameter is found,\n        # a callback is registered\
+      \ (properties work, too).\n        self.example_param = example_param\n\n  \
+      \  def work(self, input_items, output_items):\n        x = input_items[0] #\
+      \ Senial de entrada .\n        y0 = output_items[0] # Senial acumulada diferencial\n\
+      \        N = len(x)\n        diff = np.cumsum(x) - self.acum_anterior\n    \
+      \    self.acum_anterior = diff[N -1]\n        y0[:] = diff\n        return len(y0)\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    example_param: '1.0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    _io_cache: ('Embedded Python Block', 'blk', [('example_param', '1.0')], [('0',
+      'complex', 1)], [('0', 'complex', 1)], 'Embedded Python Block example - a simple
+      multiply const', ['example_param'])
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [640, 504.0]
+    rotation: 0
+    state: enabled
 connections: []
 
 metadata:
